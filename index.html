@@ -26,23 +26,11 @@ footer{text-align:center;color:var(--muted);padding:0 20px 35px}
 <section class="hero"><div class="wrap">
 <span class="badge">SCHMID HOME SEARCH</span>
 <h1>Finding home should feel simple.</h1>
-<p>Explore homes, tell me what you're looking for, and connect when you're ready. Whether you're buying, selling, investing, or just starting to look, I'm here to help.</p>
-<div class="actions">
-<a class="btn primary" href="https://portal.psre.com/Searches?p=1c7c0c4b-51ea-44b8-be6f-616bf38be0c3" target="_blank" rel="noopener">Browse Homes</a>
-<a class="btn secondary" href="#connect">I'm Interested</a>
-</div></div></section>
+<p>Tell me what you're looking for and connect when you're ready. Whether you're buying, selling, investing, or just starting to explore your options, I'm here to help.</p>
+<div class="actions"><a class="btn primary" href="#connect">Get Started</a></div></div></section>
 <main><div class="wrap">
-<section class="card">
-<h2>Start your home search</h2><p class="lead">Browse current property searches, then come back here when something catches your eye.</p>
-<div class="grid">
-<div class="mini"><strong>Browse available homes</strong>View Schmid's current property searches and listings.</div>
-<div class="mini"><strong>Tell me what you like</strong>Share a property, MLS number, or the kind of home you're looking for.</div>
-<div class="mini"><strong>Talk when it works for you</strong>Schedule a conversation around available times.</div>
-</div>
-<div class="actions"><a class="btn submit" href="https://portal.psre.com/Searches?p=1c7c0c4b-51ea-44b8-be6f-616bf38be0c3" target="_blank" rel="noopener">View Property Searches</a></div>
-</section>
 <section class="card" id="connect">
-<h2>Let's connect</h2><p class="lead">Leave your information and what you're interested in. This preview form is ready for us to connect to the notification system next.</p>
+<h2>Let's connect</h2><p class="lead">Leave your information and what you're interested in. Send your information below and Schmid will follow up with you personally.</p>
 <form id="leadForm">
 <div class="formgrid">
 <div><label for="name">Name</label><input id="name" name="name" required autocomplete="name" placeholder="Your name"></div>
@@ -53,16 +41,13 @@ footer{text-align:center;color:var(--muted);padding:0 20px 35px}
 <div class="full"><label for="notes">What are you looking for?</label><textarea id="notes" name="notes" placeholder="Area, price range, bedrooms, questions, or anything else helpful..."></textarea></div>
 <div class="full"><button class="btn submit" type="submit">Send My Information</button></div>
 </div>
-<p class="notice" id="formNote">Submitting is currently disabled while we connect the secure lead notification system.</p>
+<p class="notice" id="formNote">Secure lead notifications are being connected next.</p>
 </form>
 </section>
-<section class="card"><div class="schedule">
-<div><h2>Prefer to talk?</h2><p class="lead" style="margin-bottom:0">Soon you'll be able to choose from Schmid's available call times without the back-and-forth.</p></div>
-<a class="btn" href="#connect">Schedule a Call — Coming Soon</a>
-</div></section>
+
 </div></main>
-<footer>Schmid Home Search • Consumer home-search preview</footer>
+<footer>Schmid Home Search</footer>
 <script>
-document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();document.getElementById('formNote').textContent='Looks good — the form is a preview for now. Next we will connect submissions, notifications, Google Contacts, and scheduling.';});
+document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();document.getElementById('formNote').textContent='Looks good — the form is a preview for now. Next we will connect submissions, phone notifications, and Google Contacts.';});
 </script>
 </body></html>
