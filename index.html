@@ -53,13 +53,30 @@ footer{text-align:center;color:var(--muted);padding:0 20px 35px}
 <div class="full"><label for="notes">What are you looking for?</label><textarea id="notes" name="notes" placeholder="Area, price range, bedrooms, questions, or anything else helpful..."></textarea></div>
 <div class="full"><button class="btn submit" type="submit">Send My Information</button></div>
 </div>
-<p class="notice" id="formNote">Secure lead notifications are being connected next.</p>
+<p class="notice" id="formNote">Your information will be sent securely so Schmid can follow up with you personally.</p>
 </form>
 </section>
 
 </div></main>
 <footer>Schmid Home Search</footer>
 <script>
-document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();document.getElementById('formNote').textContent='Looks good — the form is a preview for now. Next we will connect submissions, phone notifications, and Google Contacts.';});
+document.getElementById('leadForm').addEventListener('submit',async function(e){
+e.preventDefault();
+const form=this, note=document.getElementById('formNote'), button=form.querySelector('button[type="submit"]');
+button.disabled=true; note.textContent='Sending your information...';
+const data=Object.fromEntries(new FormData(form).entries());
+try{
+await fetch('https://script.google.com/macros/s/AKfycbzLfGaI6tkwb2n2y2m5HN_S7zbrhBYwprNbulTOPn2pTadnnJpTADsksSVsGDCUPmya/exec',{
+method:'POST',
+mode:'no-cors',
+headers:{'Content-Type':'text/plain;charset=utf-8'},
+body:JSON.stringify(data)
+});
+form.reset();
+note.textContent='Thanks! Your information has been sent. Schmid will follow up with you personally.';
+}catch(err){
+note.textContent='We could not send your information right now. Please try again.';
+}finally{button.disabled=false;}
+});
 </script>
 </body></html>
