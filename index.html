@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Schmid Home Search</title>
+<style>
+:root{--purple:#5b2d8b;--deep:#2e1747;--lav:#f3eef9;--ink:#1f2430;--muted:#667085;--line:#e6e1eb;--white:#fff}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#faf9fc;line-height:1.5}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}.hero{background:linear-gradient(135deg,var(--deep),var(--purple));color:#fff;padding:64px 0 54px}
+.badge{display:inline-block;padding:7px 12px;border:1px solid #ffffff55;border-radius:999px;font-weight:700;font-size:.85rem}
+h1{font-size:clamp(2.4rem,7vw,4.7rem);line-height:1;margin:16px 0}.hero p{max-width:650px;font-size:1.15rem;color:#f2eafb}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn{display:inline-block;border:0;border-radius:999px;padding:14px 21px;font-weight:700;text-decoration:none;cursor:pointer;font-size:1rem}
+.primary{background:#fff;color:var(--deep)}.secondary{color:#fff;border:1px solid #ffffff66;background:#ffffff12}
+main{padding:36px 0 60px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;margin-bottom:22px;box-shadow:0 8px 28px #32134c0d}
+h2{margin:0 0 8px;color:var(--deep);font-size:1.7rem}.lead{color:var(--muted);margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.mini{background:var(--lav);border-radius:16px;padding:20px}.mini strong{display:block;color:var(--deep);font-size:1.05rem;margin-bottom:5px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.full{grid-column:1/-1}label{display:block;font-weight:700;margin-bottom:6px}
+input,select,textarea{width:100%;padding:13px;border:1px solid #cbc4d3;border-radius:11px;font:inherit;background:#fff}textarea{min-height:100px;resize:vertical}
+.submit{background:var(--purple);color:#fff}.notice{font-size:.9rem;color:var(--muted)}
+.schedule{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.schedule .btn{background:var(--deep);color:#fff}
+footer{text-align:center;color:var(--muted);padding:0 20px 35px}
+@media(max-width:650px){.hero{padding:42px 0}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.actions .btn{width:100%;text-align:center}.card{padding:21px}}
+</style>
+</head>
+<body>
+<section class="hero"><div class="wrap">
+<span class="badge">SCHMID HOME SEARCH</span>
+<h1>Finding home should feel simple.</h1>
+<p>Explore homes, tell me what you're looking for, and connect when you're ready. Whether you're buying, selling, investing, or just starting to look, I'm here to help.</p>
+<div class="actions">
+<a class="btn primary" href="https://portal.psre.com/Searches?p=1c7c0c4b-51ea-44b8-be6f-616bf38be0c3" target="_blank" rel="noopener">Browse Homes</a>
+<a class="btn secondary" href="#connect">I'm Interested</a>
+</div></div></section>
+<main><div class="wrap">
+<section class="card">
+<h2>Start your home search</h2><p class="lead">Browse current property searches, then come back here when something catches your eye.</p>
+<div class="grid">
+<div class="mini"><strong>Browse available homes</strong>View Schmid's current property searches and listings.</div>
+<div class="mini"><strong>Tell me what you like</strong>Share a property, MLS number, or the kind of home you're looking for.</div>
+<div class="mini"><strong>Talk when it works for you</strong>Schedule a conversation around available times.</div>
+</div>
+<div class="actions"><a class="btn submit" href="https://portal.psre.com/Searches?p=1c7c0c4b-51ea-44b8-be6f-616bf38be0c3" target="_blank" rel="noopener">View Property Searches</a></div>
+</section>
+<section class="card" id="connect">
+<h2>Let's connect</h2><p class="lead">Leave your information and what you're interested in. This preview form is ready for us to connect to the notification system next.</p>
+<form id="leadForm">
+<div class="formgrid">
+<div><label for="name">Name</label><input id="name" name="name" required autocomplete="name" placeholder="Your name"></div>
+<div><label for="phone">Phone</label><input id="phone" name="phone" required autocomplete="tel" placeholder="(555) 555-5555"></div>
+<div><label for="email">Email</label><input id="email" type="email" name="email" autocomplete="email" placeholder="you@example.com"></div>
+<div><label for="interest">I'm interested in</label><select id="interest" name="interest"><option>Buying a home</option><option>Selling a home</option><option>Buying and selling</option><option>Investment property</option><option>Just exploring</option></select></div>
+<div class="full"><label for="property">Property / MLS number (optional)</label><input id="property" name="property" placeholder="Address or MLS number"></div>
+<div class="full"><label for="notes">What are you looking for?</label><textarea id="notes" name="notes" placeholder="Area, price range, bedrooms, questions, or anything else helpful..."></textarea></div>
+<div class="full"><button class="btn submit" type="submit">Send My Information</button></div>
+</div>
+<p class="notice" id="formNote">Submitting is currently disabled while we connect the secure lead notification system.</p>
+</form>
+</section>
+<section class="card"><div class="schedule">
+<div><h2>Prefer to talk?</h2><p class="lead" style="margin-bottom:0">Soon you'll be able to choose from Schmid's available call times without the back-and-forth.</p></div>
+<a class="btn" href="#connect">Schedule a Call — Coming Soon</a>
+</div></section>
+</div></main>
+<footer>Schmid Home Search • Consumer home-search preview</footer>
+<script>
+document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();document.getElementById('formNote').textContent='Looks good — the form is a preview for now. Next we will connect submissions, notifications, Google Contacts, and scheduling.';});
+</script>
+</body></html>
