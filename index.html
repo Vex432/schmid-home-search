@@ -16,6 +16,7 @@ h2{margin:0 0 8px;color:var(--deep);font-size:1.7rem}.lead{color:var(--muted);ma
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.mini{background:var(--lav);border-radius:16px;padding:20px}.mini strong{display:block;color:var(--deep);font-size:1.05rem;margin-bottom:5px}
 .formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.full{grid-column:1/-1}label{display:block;font-weight:700;margin-bottom:6px}
 input,select,textarea{width:100%;padding:13px;border:1px solid #cbc4d3;border-radius:11px;font:inherit;background:#fff}textarea{min-height:100px;resize:vertical}
+.checks{display:flex;flex-wrap:wrap;gap:10px}.check{display:flex;align-items:center;gap:8px;border:1px solid #cbc4d3;border-radius:11px;padding:11px 13px;background:#fff;font-weight:400}.check input{width:auto;margin:0}
 .submit{background:var(--purple);color:#fff}.notice{font-size:.9rem;color:var(--muted)}
 .schedule{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.schedule .btn{background:var(--deep);color:#fff}
 footer{text-align:center;color:var(--muted);padding:0 20px 35px}
@@ -48,8 +49,14 @@ footer{text-align:center;color:var(--muted);padding:0 20px 35px}
 <div><label for="name">Name</label><input id="name" name="name" required autocomplete="name" placeholder="Your name"></div>
 <div><label for="phone">Phone</label><input id="phone" name="phone" required autocomplete="tel" placeholder="(555) 555-5555"></div>
 <div><label for="email">Email</label><input id="email" type="email" name="email" autocomplete="email" placeholder="you@example.com"></div>
-<div><label for="interest">I'm interested in</label><select id="interest" name="interest"><option>Buying a home</option><option>Selling a home</option><option>Buying and selling</option><option>Investment property</option><option>Just exploring</option></select></div>
-<div class="full"><label for="property">Property / MLS number (optional)</label><input id="property" name="property" placeholder="Address or MLS number"></div>
+<div class="full"><label>I'm interested in</label><div class="checks">
+<label class="check"><input type="checkbox" name="interest" value="Buying a home"> Buying a home</label>
+<label class="check"><input type="checkbox" name="interest" value="Selling a home"> Selling a home</label>
+<label class="check"><input type="checkbox" name="interest" value="Investment property"> Investment property</label>
+<label class="check"><input type="checkbox" name="interest" value="Just exploring"> Just exploring</label>
+</div></div>
+<div><label for="property">Property address (optional)</label><input id="property" name="property" placeholder="123 Main St"></div>
+<div><label for="mls">MLS number (optional)</label><input id="mls" name="mls" placeholder="MLS number"></div>
 <div class="full"><label for="notes">What are you looking for?</label><textarea id="notes" name="notes" placeholder="Area, price range, bedrooms, questions, or anything else helpful..."></textarea></div>
 <div class="full"><button class="btn submit" type="submit">Send My Information</button></div>
 </div>
@@ -64,7 +71,10 @@ document.getElementById('leadForm').addEventListener('submit',async function(e){
 e.preventDefault();
 const form=this, note=document.getElementById('formNote'), button=form.querySelector('button[type="submit"]');
 button.disabled=true; note.textContent='Sending your information...';
-const data=Object.fromEntries(new FormData(form).entries());
+const formData=new FormData(form);
+const data=Object.fromEntries(formData.entries());
+data.interest=formData.getAll('interest').join(', ');
+data.mls=formData.get('mls') || '';
 try{
 await fetch('https://script.google.com/macros/s/AKfycbzLfGaI6tkwb2n2y2m5HN_S7zbrhBYwprNbulTOPn2pTadnnJpTADsksSVsGDCUPmya/exec',{
 method:'POST',
